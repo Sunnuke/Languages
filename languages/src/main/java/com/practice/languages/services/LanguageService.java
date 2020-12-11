@@ -3,6 +3,7 @@ package com.practice.languages.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.practice.languages.models.Language;
@@ -11,10 +12,8 @@ import com.practice.languages.repository.LanguageRepository;
 @Service
 public class LanguageService {
 	
-	private final LanguageRepository languageRepository;
-	private LanguageService(LanguageRepository languageRepository) {
-		this.languageRepository = languageRepository;
-	}
+	@Autowired
+	private LanguageRepository languageRepository;
 	
 	
 	public List<Language> allLanguages() {
