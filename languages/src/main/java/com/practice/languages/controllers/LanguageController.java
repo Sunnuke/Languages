@@ -23,9 +23,10 @@ public class LanguageController {
 	
 //	Displays all languages
 	@RequestMapping("/languages")
-	public String index(Model model) {
+	public String index(@ModelAttribute("language") Language lang, Model model) {
 		List<Language> languages = languageService.allLanguages();
-		model.addAttribute("language", languages);
+		System.out.println("list: "+languages);
+		model.addAttribute("languages", languages);
 		return "/languages/index.jsp";
 	}
 	
@@ -33,10 +34,10 @@ public class LanguageController {
 	@RequestMapping(value = "/languages", method = RequestMethod.POST)
 	public String newlanguage(@Valid @ModelAttribute("language") Language language, BindingResult result) {
 		if (result.hasErrors()) {
-			return "redirect:/language";
+			return "redirect:/languages";
 		} else {
 			languageService.createLanguage(language);
-			return "redirect:/language";
+			return "redirect:/languages";
 		}	
 	}
 	
@@ -62,12 +63,12 @@ public class LanguageController {
 			return "redirect:/language";
 		} else {
 			languageService.updateLanguage(language, id);
-			return "redirect:/languages/show.jsp";
+			return "redirect:/languages/";
 		}	
 	}
 
 //	Deletes a selected languages
-	@RequestMapping(value = "/languages/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/languages/{id}/delete")
 	public String deletlanguage(@PathVariable("id") Long id) {
 		languageService.deleteLanguage(id);
 		return "redirect:/languages";

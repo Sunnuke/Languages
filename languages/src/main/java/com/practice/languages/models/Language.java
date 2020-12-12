@@ -31,8 +31,8 @@ public class Language {
 	@Size(min = 5, max = 20)
 	private String creator;
 	
-	@Min(1)
-	private Double currentVersion;
+	@Size(min = 3, max = 10)
+	private String currentVersion;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -44,7 +44,7 @@ public class Language {
 //	Constructors
 	public Language() {
 	}
-	public Language(String name, String creator, Double currentVersion) {
+	public Language(String name, String creator, String currentVersion) {
 		this.name = name;
 		this.creator = creator;
 		this.currentVersion = currentVersion;
@@ -86,10 +86,10 @@ public class Language {
 	}
 
 	// Current Version
-	public Double getCurrentVersion() {
+	public String getCurrentVersion() {
 		return currentVersion;
 	}
-	public void setCurrentVersion(Double currentVersion) {
+	public void setCurrentVersion(String currentVersion) {
 		this.currentVersion = currentVersion;
 	}
 	
