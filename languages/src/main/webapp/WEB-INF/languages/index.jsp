@@ -23,7 +23,7 @@
 		<tbody>
 			<c:forEach items="${languages}" var="language">
 				<tr>
-					<td scope="col"><c:out value="${language.name}"/></td>
+					<td scope="col"><a href="/languages/${language.id}"><c:out value="${language.name}"/></a></td>
 					<td scope="col"><c:out value="${language.creator}"/></td>
 					<td scope="col"><c:out value="${language.currentVersion}"/></td>
 					<td scope="col">
