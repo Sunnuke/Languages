@@ -57,13 +57,13 @@ public class LanguageController {
 		return "/languages/edit.jsp";
 	}
 //	Updates a selected languages
-	@RequestMapping(value = "/languages/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value="/languages/{id}", method=RequestMethod.PUT)
 	public String updatelanguage(@Valid @ModelAttribute("language") Language language, BindingResult result, @PathVariable("id") Long id) {
 		if (result.hasErrors()) {
-			return "redirect:/language";
+			return "redirect:/languages";
 		} else {
 			languageService.updateLanguage(language, id);
-			return "redirect:/languages/";
+			return "redirect:/languages";
 		}	
 	}
 

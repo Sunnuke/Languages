@@ -37,12 +37,12 @@ public class LanguageService {
 	}
 	
 	public Language updateLanguage(Language lang, Long id) {
-		Language langOg = findLanguage(id);
+		Language langOg = this.findLanguage(id);
 		langOg.setName(lang.getName());
 		langOg.setCreator(lang.getCreator());
 		langOg.setCurrentVersion(lang.getCurrentVersion());
-		languageRepository.save(langOg);
-		return langOg;
+		languageRepository.save(this.findLanguage(id));
+		return this.findLanguage(id);
 	}
 	
 	public void deleteLanguage(Long id) {
